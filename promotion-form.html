@@ -9,6 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            // Initialize EmailJS with your Public Key
+            emailjs.init("8XqZo5lri3xJFM8tf");
+        })();
+    </script>
     
     <style>
         body {
@@ -58,6 +66,26 @@
             color: #c7d2fe;
             font-weight: 600;
         }
+
+        .loading-spinner {
+            border: 3px solid rgba(129, 140, 248, 0.3);
+            border-top: 3px solid #818cf8;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body class="p-6 md:p-12">
@@ -81,22 +109,22 @@
                 
                 <div class="space-y-4">
                     <div>
-                        <label for="mentorName" class="block mb-2">Your Name *</label>
-                        <input type="text" id="mentorName" name="mentorName" required 
+                        <label for="mentor_name" class="block mb-2">Your Name *</label>
+                        <input type="text" id="mentor_name" name="mentor_name" required 
                                class="w-full px-4 py-3 rounded-lg" 
                                placeholder="Enter your full name">
                     </div>
                     
                     <div>
-                        <label for="mentorEmail" class="block mb-2">Your Email *</label>
-                        <input type="email" id="mentorEmail" name="mentorEmail" required 
+                        <label for="mentor_email" class="block mb-2">Your Email *</label>
+                        <input type="email" id="mentor_email" name="mentor_email" required 
                                class="w-full px-4 py-3 rounded-lg" 
                                placeholder="mentor@example.com">
                     </div>
 
                     <div>
-                        <label for="mentorDiscord" class="block mb-2">Discord Username</label>
-                        <input type="text" id="mentorDiscord" name="mentorDiscord" 
+                        <label for="mentor_discord" class="block mb-2">Discord Username</label>
+                        <input type="text" id="mentor_discord" name="mentor_discord" 
                                class="w-full px-4 py-3 rounded-lg" 
                                placeholder="username#0000">
                     </div>
@@ -109,29 +137,29 @@
                 
                 <div class="space-y-4">
                     <div>
-                        <label for="studentName" class="block mb-2">Student Name *</label>
-                        <input type="text" id="studentName" name="studentName" required 
+                        <label for="student_name" class="block mb-2">Student Name *</label>
+                        <input type="text" id="student_name" name="student_name" required 
                                class="w-full px-4 py-3 rounded-lg" 
                                placeholder="Enter student's full name">
                     </div>
                     
                     <div>
-                        <label for="studentEmail" class="block mb-2">Student Email *</label>
-                        <input type="email" id="studentEmail" name="studentEmail" required 
+                        <label for="student_email" class="block mb-2">Student Email *</label>
+                        <input type="email" id="student_email" name="student_email" required 
                                class="w-full px-4 py-3 rounded-lg" 
                                placeholder="student@university.edu">
                     </div>
 
                     <div>
-                        <label for="studentDiscord" class="block mb-2">Student Discord Username</label>
-                        <input type="text" id="studentDiscord" name="studentDiscord" 
+                        <label for="student_discord" class="block mb-2">Student Discord Username</label>
+                        <input type="text" id="student_discord" name="student_discord" 
                                class="w-full px-4 py-3 rounded-lg" 
                                placeholder="username#0000">
                     </div>
 
                     <div>
-                        <label for="studentTeam" class="block mb-2">Team Name</label>
-                        <input type="text" id="studentTeam" name="studentTeam" 
+                        <label for="student_team" class="block mb-2">Team Name</label>
+                        <input type="text" id="student_team" name="student_team" 
                                class="w-full px-4 py-3 rounded-lg" 
                                placeholder="Enter team name if applicable">
                     </div>
@@ -144,24 +172,24 @@
                 
                 <div class="grid md:grid-cols-2 gap-6 mb-6">
                     <div>
-                        <label for="currentRank" class="block mb-2">Current Rank *</label>
-                        <select id="currentRank" name="currentRank" required 
+                        <label for="current_rank" class="block mb-2">Current Rank *</label>
+                        <select id="current_rank" name="current_rank" required 
                                 class="w-full px-4 py-3 rounded-lg">
                             <option value="">Select current rank...</option>
-                            <option value="cadet">Cadet</option>
-                            <option value="ensign">Ensign</option>
-                            <option value="lieutenant_commander">Lieutenant Commander</option>
+                            <option value="Cadet">Cadet</option>
+                            <option value="Ensign">Ensign</option>
+                            <option value="Lieutenant Commander">Lieutenant Commander</option>
                         </select>
                     </div>
                     
                     <div>
-                        <label for="proposedRank" class="block mb-2">Proposed Rank *</label>
-                        <select id="proposedRank" name="proposedRank" required 
+                        <label for="proposed_rank" class="block mb-2">Proposed Rank *</label>
+                        <select id="proposed_rank" name="proposed_rank" required 
                                 class="w-full px-4 py-3 rounded-lg">
                             <option value="">Select proposed rank...</option>
-                            <option value="ensign">Ensign</option>
-                            <option value="lieutenant_commander">Lieutenant Commander</option>
-                            <option value="commander">Commander</option>
+                            <option value="Ensign">Ensign</option>
+                            <option value="Lieutenant Commander">Lieutenant Commander</option>
+                            <option value="Commander">Commander</option>
                         </select>
                     </div>
                 </div>
@@ -182,7 +210,7 @@
                         <div class="text-center">
                             <div class="w-12 h-12 mx-auto mb-2">
                                 <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#D4AF37">
-                                    <circle cx="50" cy="50" r="12" />
+                                    ircle cx="50" cy="50" r="12" />
                                 </svg>
                             </div>
                             <p class="text-violet-300 font-orbitron">Ensign</p>
@@ -191,9 +219,9 @@
                         <div class="text-center">
                             <div class="w-12 h-12 mx-auto mb-2">
                                 <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#D4AF37">
-                                    <circle cx="28" cy="50" r="10"/>
-                                    <circle cx="50" cy="50" r="10" fill="#111827" stroke="#D4AF37" stroke-width="3"/>
-                                    <circle cx="72" cy="50" r="10"/>
+                                    ircle cx="28" cy="50" r="10"/>
+                                    ircle cx="50" cy="50" r="10" fill="#111827" stroke="#D4AF37" stroke-width="3"/>
+                                    ircle cx="72" cy="50" r="10"/>
                                 </svg>
                             </div>
                             <p class="text-violet-300 font-orbitron text-[10px]">Lt. Cmdr</p>
@@ -202,9 +230,9 @@
                         <div class="text-center">
                             <div class="w-12 h-12 mx-auto mb-2">
                                 <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#D4AF37">
-                                    <circle cx="28" cy="50" r="10"/>
-                                    <circle cx="50" cy="50" r="10"/>
-                                    <circle cx="72" cy="50" r="10"/>
+                                    ircle cx="28" cy="50" r="10"/>
+                                    ircle cx="50" cy="50" r="10"/>
+                                    ircle cx="72" cy="50" r="10"/>
                                 </svg>
                             </div>
                             <p class="text-violet-300 font-orbitron">Cmdr</p>
@@ -221,186 +249,15 @@
                     <label class="block mb-3">Demonstrated Qualities (check all that apply) *</label>
                     <div class="space-y-2">
                         <label class="flex items-center text-indigo-200 cursor-pointer hover:text-white">
-                            <input type="checkbox" name="qualities" value="technical_excellence" class="mr-3 w-5 h-5">
+                            <input type="checkbox" name="qualities" value="Technical Excellence & Innovation" class="mr-3 w-5 h-5">
                             <i class="fas fa-star text-yellow-400 mr-2"></i>
                             Technical Excellence & Innovation
                         </label>
                         <label class="flex items-center text-indigo-200 cursor-pointer hover:text-white">
-                            <input type="checkbox" name="qualities" value="teamwork" class="mr-3 w-5 h-5">
+                            <input type="checkbox" name="qualities" value="Exceptional Teamwork & Collaboration" class="mr-3 w-5 h-5">
                             <i class="fas fa-users text-blue-400 mr-2"></i>
                             Exceptional Teamwork & Collaboration
                         </label>
                         <label class="flex items-center text-indigo-200 cursor-pointer hover:text-white">
-                            <input type="checkbox" name="qualities" value="leadership" class="mr-3 w-5 h-5">
-                            <i class="fas fa-trophy text-amber-400 mr-2"></i>
-                            Leadership & Initiative
-                        </label>
-                        <label class="flex items-center text-indigo-200 cursor-pointer hover:text-white">
-                            <input type="checkbox" name="qualities" value="problem_solving" class="mr-3 w-5 h-5">
-                            <i class="fas fa-lightbulb text-indigo-400 mr-2"></i>
-                            Outstanding Problem-Solving
-                        </label>
-                        <label class="flex items-center text-indigo-200 cursor-pointer hover:text-white">
-                            <input type="checkbox" name="qualities" value="mentorship" class="mr-3 w-5 h-5">
-                            <i class="fas fa-hands-helping text-purple-400 mr-2"></i>
-                            Peer Mentorship & Knowledge Sharing
-                        </label>
-                    </div>
-                </div>
-
-                <div class="mb-6">
-                    <label for="achievements" class="block mb-2">Specific Achievements *</label>
-                    <textarea id="achievements" name="achievements" required rows="4" 
-                              class="w-full px-4 py-3 rounded-lg" 
-                              placeholder="Describe specific projects, contributions, or accomplishments that demonstrate this student's readiness for promotion..."></textarea>
-                    <p class="text-xs text-indigo-400 mt-1">Include technical details, challenges overcome, and impact on team/project.</p>
-                </div>
-
-                <div>
-                    <label for="reasoning" class="block mb-2">Additional Reasoning *</label>
-                    <textarea id="reasoning" name="reasoning" required rows="4" 
-                              class="w-full px-4 py-3 rounded-lg" 
-                              placeholder="Why do you believe this student deserves this promotion? What sets them apart from their peers?"></textarea>
-                </div>
-            </section>
-
-            <!-- Evidence -->
-            <section class="mb-8">
-                <h2 class="font-orbitron text-2xl text-white mb-6"><i class="fas fa-link text-indigo-400 mr-2"></i>Supporting Evidence</h2>
-                
-                <div class="space-y-4">
-                    <div>
-                        <label for="projectLink" class="block mb-2">Project/Repository Link</label>
-                        <input type="url" id="projectLink" name="projectLink" 
-                               class="w-full px-4 py-3 rounded-lg" 
-                               placeholder="https://github.com/username/project">
-                    </div>
-                    
-                    <div>
-                        <label for="additionalLinks" class="block mb-2">Additional Evidence Links</label>
-                        <textarea id="additionalLinks" name="additionalLinks" rows="3" 
-                                  class="w-full px-4 py-3 rounded-lg" 
-                                  placeholder="Provide any additional links (Discord messages, demo videos, documentation, etc.)"></textarea>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Submit Button -->
-            <div class="text-center pt-6 border-t border-indigo-500/30">
-                <button type="submit" class="font-orbitron font-bold text-white px-10 py-4 rounded-full uppercase tracking-wider transition-all transform hover:-translate-y-1 hover:scale-105" 
-                        style="background: linear-gradient(90deg, #818cf8, #c084fc); box-shadow: 0 0 20px rgba(167, 139, 250, 0.5);">
-                    <i class="fas fa-paper-plane mr-2"></i>Submit Recommendation
-                </button>
-                <p class="text-xs text-indigo-400 mt-4">All promotions are reviewed by Stella Command</p>
-            </div>
-
-        </form>
-
-        <!-- Success Message (Hidden by default) -->
-        <div id="successMessage" class="hidden glass-panel p-8 rounded-xl mt-8 text-center border-2 border-green-500">
-            <i class="fas fa-check-circle text-6xl text-green-400 mb-4"></i>
-            <h2 class="font-orbitron text-3xl text-white mb-4">Transmission Received</h2>
-            <p class="text-green-200 text-lg mb-2">
-                Your promotion recommendation has been successfully submitted to Stella Command.
-            </p>
-            <p class="text-indigo-300 text-sm">
-                The Admiral and Vice Admiral will review this nomination and make a determination.
-            </p>
-            <button onclick="resetForm()" class="mt-6 font-orbitron text-sm text-indigo-400 hover:text-white border border-indigo-500 px-6 py-2 rounded-full transition-colors">
-                Submit Another Recommendation
-            </button>
-        </div>
-
-    </div>
-
-    <script>
-        // Form handling
-        const form = document.getElementById('promotionForm');
-        const successMessage = document.getElementById('successMessage');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Validate that at least one quality is checked
-            const qualities = form.querySelectorAll('input[name="qualities"]:checked');
-            if (qualities.length === 0) {
-                alert('Please select at least one demonstrated quality.');
-                return;
-            }
-
-            // Collect form data
-            const formData = new FormData(form);
-            const data = {};
-            
-            // Convert FormData to object
-            for (let [key, value] of formData.entries()) {
-                if (key === 'qualities') {
-                    if (!data.qualities) data.qualities = [];
-                    data.qualities.push(value);
-                } else {
-                    data[key] = value;
-                }
-            }
-
-            // Log the data (in production, this would send to a server)
-            console.log('Promotion Recommendation Data:', data);
-
-            // Show success message
-            form.style.display = 'none';
-            successMessage.classList.remove('hidden');
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            // In production, you would send this data to your backend:
-            // fetch('/api/submit-promotion', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify(data)
-            // });
-        });
-
-        function resetForm() {
-            form.reset();
-            form.style.display = 'block';
-            successMessage.classList.add('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Dynamic rank validation
-        const currentRank = document.getElementById('currentRank');
-        const proposedRank = document.getElementById('proposedRank');
-
-        currentRank.addEventListener('change', function() {
-            const current = this.value;
-            const proposedOptions = proposedRank.querySelectorAll('option');
-            
-            proposedOptions.forEach(option => {
-                option.disabled = false;
-            });
-
-            // Disable invalid promotions
-            if (current === 'cadet') {
-                proposedOptions.forEach(option => {
-                    if (option.value === 'lieutenant_commander' || option.value === 'commander') {
-                        option.disabled = true;
-                    }
-                });
-            } else if (current === 'ensign') {
-                proposedOptions.forEach(option => {
-                    if (option.value === 'ensign') {
-                        option.disabled = true;
-                    }
-                });
-            } else if (current === 'lieutenant_commander') {
-                proposedOptions.forEach(option => {
-                    if (option.value !== 'commander' && option.value !== '') {
-                        option.disabled = true;
-                    }
-                });
-            }
-        });
-    </script>
-
-</body>
-</html>
+                            <input type="checkbox" name="qualities" value="Leadership & Initiative" class="mr-3 w-5 h-5">
+                            <i class="fas fa
