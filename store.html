@@ -84,8 +84,8 @@
         <p class="text-indigo-500 text-sm mt-2">Powered by Printful</p>
     </footer>
     <script>
-        const PRINTFUL_API_KEY = 'YOUR_PRINTFUL_API_KEY';
-        const API_BASE = 'https://api.printful.com';
+        // API key is now secure on backend
+        const API_BASE = 'https://api-for-store.onrender.com';
         let allProducts = [];
         document.addEventListener('DOMContentLoaded', () => { loadProducts(); });
         async function loadProducts() {
@@ -96,7 +96,7 @@
             error.classList.add('hidden');
             container.classList.add('hidden');
             try {
-                const response = await fetch(`${API_BASE}/products`, { headers: { 'Authorization': `Bearer ${PRINTFUL_API_KEY}` } });
+                const response = await fetch(`${API_BASE}/api/products`);
                 if (!response.ok) throw new Error(`API Error: ${response.status}`);
                 const data = await response.json();
                 allProducts = data.result || [];
