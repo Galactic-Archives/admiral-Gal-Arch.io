@@ -260,4 +260,199 @@
                         </label>
                         <label class="flex items-center text-indigo-200 cursor-pointer hover:text-white">
                             <input type="checkbox" name="qualities" value="Leadership & Initiative" class="mr-3 w-5 h-5">
-                            <i class="fas fa
+                            <i class="fas fa-trophy text-amber-400 mr-2"></i>
+                            Leadership & Initiative
+                        </label>
+                        <label class="flex items-center text-indigo-200 cursor-pointer hover:text-white">
+                            <input type="checkbox" name="qualities" value="Outstanding Problem-Solving" class="mr-3 w-5 h-5">
+                            <i class="fas fa-lightbulb text-indigo-400 mr-2"></i>
+                            Outstanding Problem-Solving
+                        </label>
+                        <label class="flex items-center text-indigo-200 cursor-pointer hover:text-white">
+                            <input type="checkbox" name="qualities" value="Peer Mentorship & Knowledge Sharing" class="mr-3 w-5 h-5">
+                            <i class="fas fa-hands-helping text-purple-400 mr-2"></i>
+                            Peer Mentorship & Knowledge Sharing
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label for="achievements" class="block mb-2">Specific Achievements *</label>
+                    <textarea id="achievements" name="achievements" required rows="4" 
+                              class="w-full px-4 py-3 rounded-lg" 
+                              placeholder="Describe specific projects, contributions, or accomplishments that demonstrate this student's readiness for promotion..."></textarea>
+                    <p class="text-xs text-indigo-400 mt-1">Include technical details, challenges overcome, and impact on team/project.</p>
+                </div>
+
+                <div>
+                    <label for="reasoning" class="block mb-2">Additional Reasoning *</label>
+                    <textarea id="reasoning" name="reasoning" required rows="4" 
+                              class="w-full px-4 py-3 rounded-lg" 
+                              placeholder="Why do you believe this student deserves this promotion? What sets them apart from their peers?"></textarea>
+                </div>
+            </section>
+
+            <!-- Evidence -->
+            <section class="mb-8">
+                <h2 class="font-orbitron text-2xl text-white mb-6"><i class="fas fa-link text-indigo-400 mr-2"></i>Supporting Evidence</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label for="project_link" class="block mb-2">Project/Repository Link</label>
+                        <input type="url" id="project_link" name="project_link" 
+                               class="w-full px-4 py-3 rounded-lg" 
+                               placeholder="https://github.com/username/project">
+                    </div>
+                    
+                    <div>
+                        <label for="additional_links" class="block mb-2">Additional Evidence Links</label>
+                        <textarea id="additional_links" name="additional_links" rows="3" 
+                                  class="w-full px-4 py-3 rounded-lg" 
+                                  placeholder="Provide any additional links (Discord messages, demo videos, documentation, etc.)"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Submit Button -->
+            <div class="text-center pt-6 border-t border-indigo-500/30">
+                <button type="submit" id="submitBtn" class="submit-btn font-orbitron font-bold text-white px-10 py-4 rounded-full uppercase tracking-wider transition-all transform hover:-translate-y-1 hover:scale-105" 
+                        style="background: linear-gradient(90deg, #818cf8, #c084fc); box-shadow: 0 0 20px rgba(167, 139, 250, 0.5);">
+                    <i class="fas fa-paper-plane mr-2"></i>Submit Recommendation
+                </button>
+                <p class="text-xs text-indigo-400 mt-4">All promotions are reviewed by Stella Command</p>
+                <div id="loadingSpinner" class="loading-spinner hidden mt-4"></div>
+            </div>
+
+        </form>
+
+        <!-- Success Message (Hidden by default) -->
+        <div id="successMessage" class="hidden glass-panel p-8 rounded-xl mt-8 text-center border-2 border-green-500">
+            <i class="fas fa-check-circle text-6xl text-green-400 mb-4"></i>
+            <h2 class="font-orbitron text-3xl text-white mb-4">Transmission Received</h2>
+            <p class="text-green-200 text-lg mb-2">
+                Your promotion recommendation has been successfully submitted to Stella Command.
+            </p>
+            <p class="text-indigo-300 text-sm">
+                The Admiral and Vice Admiral will review this nomination and make a determination.
+            </p>
+            <button onclick="resetForm()" class="mt-6 font-orbitron text-sm text-indigo-400 hover:text-white border border-indigo-500 px-6 py-2 rounded-full transition-colors">
+                Submit Another Recommendation
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // Form handling
+        const form = document.getElementById('promotionForm');
+        const successMessage = document.getElementById('successMessage');
+        const submitBtn = document.getElementById('submitBtn');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate that at least one quality is checked
+            const qualities = form.querySelectorAll('input[name="qualities"]:checked');
+            if (qualities.length === 0) {
+                alert('Please select at least one demonstrated quality.');
+                return;
+            }
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+            loadingSpinner.classList.remove('hidden');
+
+            // Collect form data
+            const formData = {};
+            
+            // Get text inputs
+            formData.mentor_name = document.getElementById('mentor_name').value;
+            formData.mentor_email = document.getElementById('mentor_email').value;
+            formData.mentor_discord = document.getElementById('mentor_discord').value || 'Not provided';
+            formData.student_name = document.getElementById('student_name').value;
+            formData.student_email = document.getElementById('student_email').value;
+            formData.student_discord = document.getElementById('student_discord').value || 'Not provided';
+            formData.student_team = document.getElementById('student_team').value || 'Not provided';
+            formData.current_rank = document.getElementById('current_rank').value;
+            formData.proposed_rank = document.getElementById('proposed_rank').value;
+            formData.achievements = document.getElementById('achievements').value;
+            formData.reasoning = document.getElementById('reasoning').value;
+            formData.project_link = document.getElementById('project_link').value || 'Not provided';
+            formData.additional_links = document.getElementById('additional_links').value || 'Not provided';
+            
+            // Get checked qualities as comma-separated string
+            const qualitiesArray = Array.from(qualities).map(cb => cb.value);
+            formData.qualities = qualitiesArray.join(', ');
+
+            // Send email using EmailJS
+            emailjs.send('service_8ekuyrb', 'template_ak23vaj', formData)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Hide form, show success message
+                    form.style.display = 'none';
+                    loadingSpinner.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Submit Recommendation';
+                    loadingSpinner.classList.add('hidden');
+                    
+                    alert('Failed to send recommendation. Please try again or contact support.');
+                });
+        });
+
+        function resetForm() {
+            form.reset();
+            form.style.display = 'block';
+            successMessage.classList.add('hidden');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Submit Recommendation';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Dynamic rank validation
+        const currentRank = document.getElementById('current_rank');
+        const proposedRank = document.getElementById('proposed_rank');
+
+        currentRank.addEventListener('change', function() {
+            const current = this.value;
+            const proposedOptions = proposedRank.querySelectorAll('option');
+            
+            proposedOptions.forEach(option => {
+                option.disabled = false;
+            });
+
+            // Disable invalid promotions
+            if (current === 'Cadet') {
+                proposedOptions.forEach(option => {
+                    if (option.value === 'Lieutenant Commander' || option.value === 'Commander') {
+                        option.disabled = true;
+                    }
+                });
+            } else if (current === 'Ensign') {
+                proposedOptions.forEach(option => {
+                    if (option.value === 'Ensign') {
+                        option.disabled = true;
+                    }
+                });
+            } else if (current === 'Lieutenant Commander') {
+                proposedOptions.forEach(option => {
+                    if (option.value !== 'Commander' && option.value !== '') {
+                        option.disabled = true;
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
