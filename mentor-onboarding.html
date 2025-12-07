@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Mentor Onboarding | Galactic Archives</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0a1f;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(129, 140, 248, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(192, 132, 252, 0.15) 0%, transparent 40%),
+                url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Ccircle cx="50" cy="50" r="1"/%3E%3Ccircle cx="10" cy="10" r="1"/%3E%3Ccircle cx="90" cy="90" r="1"/%3E%3C/g%3E%3C/svg%3E');
+            color: #e0e7ff;
+            min-height: 100vh;
+        }
+
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        
+        .glow-text {
+            text-shadow: 0 0 8px rgba(129, 140, 248, 0.6), 0 0 12px rgba(167, 139, 250, 0.4);
+        }
+        
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(129, 140, 248, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            .glass-panel {
+                background: white;
+                border: 1px solid #ddd;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+    
+    <div class="max-w-4xl mx-auto">
+        
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="font-orbitron text-5xl md:text-6xl font-bold text-white tracking-widest glow-text mb-4">
+                THE GALACTIC<br>ARCHIVES
+            </h1>
+            <div class="glass-panel inline-block px-8 py-3 rounded-full">
+                <p class="font-orbitron text-xl text-indigo-300 uppercase tracking-wider">Technical Mentor Onboarding</p>
+            </div>
+        </header>
+
+        <!-- Welcome Message -->
+        <section class="glass-panel p-8 rounded-xl mb-8">
+            <h2 class="font-orbitron text-3xl text-white mb-4">Welcome to Stella Command</h2>
+            <p class="text-indigo-200 leading-relaxed mb-4">
+                Greetings, Technical Mentor. You have been selected to join the elite crew of Stella Command, the operational heart of the Galactic Archives hackathon. Your expertise and guidance will be instrumental in helping our student fleet navigate the Final Data Frontier.
+            </p>
+            <p class="text-indigo-200 leading-relaxed">
+                This document contains everything you need to understand your role, our mission, and how to support students in their cosmic exploration.
+            </p>
+        </section>
+
+        <!-- Mission Statement -->
+        <section class="glass-panel p-8 rounded-xl mb-8 border-l-4 border-indigo-500">
+            <h2 class="font-orbitron text-2xl text-white mb-4">Our Mission</h2>
+            <div class="bg-indigo-900/30 p-6 rounded-lg border border-indigo-500/20">
+                <p class="font-orbitron text-xl md:text-2xl leading-relaxed text-white text-center italic">
+                    "To venture into the vast cosmic data streams of NASA and SpaceX, analyze the unknown, and build groundbreaking applications. We explore the Final Data Frontier."
+                </p>
+            </div>
+        </section>
+
+        <!-- Core Values -->
+        <section class="glass-panel p-8 rounded-xl mb-8">
+            <h2 class="font-orbitron text-2xl text-white mb-6">Core Values</h2>
+            <div class="space-y-4">
+                <div class="flex items-start bg-indigo-900/20 p-5 rounded-lg border border-indigo-500/20">
+                    <span class="font-orbitron text-4xl text-indigo-500/50 font-bold mr-4">01</span>
+                    <div>
+                        <h3 class="font-orbitron text-xl text-white mb-1">Exploration</h3>
+                        <p class="text-indigo-200">We don't just consume data; we map it. Encourage students to venture beyond the obvious and discover novel insights.</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-indigo-900/20 p-5 rounded-lg border border-indigo-500/20">
+                    <span class="font-orbitron text-4xl text-indigo-500/50 font-bold mr-4">02</span>
+                    <div>
+                        <h3 class="font-orbitron text-xl text-white mb-1">Immersion</h3>
+                        <p class="text-indigo-200">Treat code as starship operations. Maintain the theme and help students engage with the experience as cosmic explorers.</p>
+                    </div>
+                </div>
+                <div class="flex items-start bg-indigo-900/20 p-5 rounded-lg border border-indigo-500/20">
+                    <span class="font-orbitron text-4xl text-indigo-500/50 font-bold mr-4">03</span>
+                    <div>
+                        <h3 class="font-orbitron text-xl text-white mb-1">Innovation</h3>
+                        <p class="text-indigo-200">Combine disparate data for novel utility. Guide students to create unique solutions that push boundaries.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Organizational Hierarchy Chart -->
+        <section class="glass-panel p-8 rounded-xl mb-8">
+            <h2 class="font-orbitron text-2xl text-white mb-6"><i class="fas fa-sitemap text-indigo-400 mr-3"></i>Organizational Hierarchy</h2>
+            <p class="text-indigo-200 mb-6">
+                This chart shows the complete command structure of the Galactic Archives, from the Admiral down through student ranks. Understanding this hierarchy helps you navigate the chain of command effectively.
+            </p>
+            
+            <div class="bg-indigo-900/20 p-6 rounded-lg border border-indigo-500/30">
+                <img src="./assets/hierarchy-chart.jpg" 
+                     alt="Galactic Archives Organizational Hierarchy Chart" 
+                     class="w-full h-auto rounded-lg shadow-2xl"
+                     style="max-width: 600px; margin: 0 auto; display: block;">
+                <p class="text-center text-sm text-indigo-400 mt-4">
+                    Complete organizational structure showing Stella Command and Student Fleet ranks
+                </p>
+            </div>
+            
+            <div class="mt-6 bg-violet-900/20 p-4 rounded-lg border border-violet-500/30">
+                <h3 class="font-orbitron text-lg text-white mb-3">Reading the Chart</h3>
+                <ul class="text-sm text-indigo-200 space-y-2">
+                    <li><i class="fas fa-circle text-purple-400 mr-2"></i><strong class="text-purple-300">Purple badge (SH):</strong> Admiral - Scott Harvey-Whittle, supreme commander</li>
+                    <li><i class="fas fa-circle text-teal-400 mr-2"></i><strong class="text-teal-300">Teal badges (V):</strong> Vice Admiral and Communications Officer (currently vacant)</li>
+                    <li><i class="fas fa-circle text-yellow-500 mr-2"></i><strong class="text-yellow-300">Gold badges (DF, SW):</strong> Chief Engineer (David FayanKin) and Ambassador (vacant)</li>
+                    <li><i class="fas fa-circle text-green-400 mr-2"></i><strong class="text-green-300">Green badge (V):</strong> Technical Mentors - your role (vacancies available)</li>
+                    <li><i class="fas fa-circle text-orange-400 mr-2"></i><strong class="text-orange-300">Orange badge (SR):</strong> Student Role Commander</li>
+                    <li><i class="fas fa-circle text-blue-400 mr-2"></i><strong class="text-blue-300">Blue badges (SR):</strong> Student progression ranks (Lt Commander, Ensign, Cadet)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Your Role -->
+        <section class="glass-panel p-8 rounded-xl mb-8">
+            <h2 class="font-orbitron text-2xl text-white mb-6">Your Role: Technical Mentor</h2>
+            
+            <div class="bg-violet-900/20 p-6 rounded-lg border border-violet-500/30 mb-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 mr-4">
+                        <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M50 15 L20 45 C 20 75, 80 75, 80 45 L50 15Z" fill="#10b981" stroke="none"/>
+                            <path d="M50 35 L52.3 43.2 61.2 45.1 54.6 51.5 56.1 60.3 50 55.8 43.9 60.3 45.4 51.5 38.8 45.1 47.7 43.2 Z" stroke="none" fill="white"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-orbitron text-xl text-white">Technical Mentor</h3>
+                        <p class="text-violet-300 text-sm">Subject Matter Expert | Reporting to Chief Engineer</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="font-orbitron text-xl text-white mb-4">Responsibilities & Duties</h3>
+            <ul class="space-y-3 text-indigo-200">
+                <li class="flex items-start">
+                    <i class="fas fa-chevron-right text-indigo-500 mt-1 mr-3"></i>
+                    <div>
+                        <strong class="text-white">Student Support:</strong> Provide direct technical assistance to student teams. Help them debug code, understand APIs, and overcome technical challenges.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-chevron-right text-indigo-500 mt-1 mr-3"></i>
+                    <div>
+                        <strong class="text-white">Workshop Leadership:</strong> May lead specific breakout sessions on topics like "Intro to APIs," "Data Visualization," or "Working with NASA/SpaceX Data."
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-chevron-right text-indigo-500 mt-1 mr-3"></i>
+                    <div>
+                        <strong class="text-white">Unblocking Teams:</strong> Help teams who are stuck on technical issues during the event. Your expertise keeps the mission moving forward.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-chevron-right text-indigo-500 mt-1 mr-3"></i>
+                    <div>
+                        <strong class="text-white">Coordination:</strong> Report to the Chief Engineer and collaborate with other mentors to ensure comprehensive coverage of student needs.
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Virtual Support Guide -->
+        <section class="glass-panel p-8 rounded-xl mb-8">
+            <h2 class="font-orbitron text-2xl text-white mb-6">Supporting Students Virtually</h2>
+            <p class="text-indigo-200 mb-6">
+                As a virtual mentor, your support channels are critical to student success. Here's how to effectively assist teams in a remote environment:
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-indigo-900/20 p-5 rounded-lg border border-indigo-500/20">
+                    <h3 class="font-orbitron text-lg text-white mb-3"><i class="fas fa-comments text-indigo-400 mr-2"></i>Discord Support</h3>
+                    <ul class="text-sm text-indigo-200 space-y-2">
+                        <li>• Monitor the #tech-support channel actively</li>
+                        <li>• Respond to @mentions promptly</li>
+                        <li>• Use threads to keep conversations organized</li>
+                        <li>• Share code snippets using Discord's formatting</li>
+                    </ul>
+                </div>
+                <div class="bg-indigo-900/20 p-5 rounded-lg border border-indigo-500/20">
+                    <h3 class="font-orbitron text-lg text-white mb-3"><i class="fas fa-video text-indigo-400 mr-2"></i>Virtual Office Hours</h3>
+                    <ul class="text-sm text-indigo-200 space-y-2">
+                        <li>• Join voice channels during scheduled times</li>
+                        <li>• Use screen sharing for debugging sessions</li>
+                        <li>• Record sessions if permitted for reference</li>
+                        <li>• Be patient with connection issues</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-violet-900/20 p-6 rounded-lg border border-violet-500/30">
+                <h3 class="font-orbitron text-lg text-white mb-4">Best Practices for Virtual Mentoring</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <h4 class="text-green-400 font-bold mb-2"><i class="fas fa-check mr-2"></i>Do</h4>
+                        <ul class="text-sm text-indigo-200 space-y-1">
+                            <li>• Ask guiding questions instead of giving direct answers</li>
+                            <li>• Encourage students to research and explore</li>
+                            <li>• Celebrate small wins and progress</li>
+                            <li>• Use the Stella Command voice and theme</li>
+                            <li>• Document common issues for the team</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-red-400 font-bold mb-2"><i class="fas fa-times mr-2"></i>Don't</h4>
+                        <ul class="text-sm text-indigo-200 space-y-1">
+                            <li>• Don't write code for students</li>
+                            <li>• Don't dismiss "simple" questions</li>
+                            <li>• Don't disappear without notifying the team</li>
+                            <li>• Don't break character unnecessarily</li>
+                            <li>• Don't forget to recognize potential leaders</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discord Server -->
+        <section class="glass-panel p-8 rounded-xl mb-8 border-2 border-indigo-500">
+            <h2 class="font-orbitron text-2xl text-white mb-4"><i class="fab fa-discord text-indigo-400 mr-3"></i>Join the Fleet on Discord</h2>
+            <p class="text-indigo-200 mb-6">
+                Discord is our primary communication hub during the hackathon. All mentors must join and monitor the server to provide real-time support.
+            </p>
+            <div class="bg-indigo-900/30 p-6 rounded-lg text-center">
+                <p class="text-sm text-indigo-400 uppercase tracking-wider mb-2">Discord Server Invite</p>
+                <a href="https://discord.gg/galacticarchives" target="_blank" class="inline-block font-orbitron font-bold text-white text-xl px-8 py-4 rounded-full uppercase tracking-wider transition-transform transform hover:-translate-y-1 no-print" 
+                   style="background: linear-gradient(90deg, #818cf8, #c084fc); box-shadow: 0 0 15px rgba(167, 139, 250, 0.4);">
+                    <i class="fab fa-discord mr-2"></i>Join Discord Server
+                </a>
+                <p class="text-xs text-indigo-300 mt-4">discord.gg/galacticarchives</p>
+            </div>
+            <div class="mt-6 bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30">
+                <p class="text-sm text-yellow-200">
+                    <i class="fas fa-info-circle mr-2"></i><strong>Important:</strong> Once joined, contact the Comms Officer or Vice Admiral to receive your Technical Mentor role and access to mentor-only channels.
+                </p>
+            </div>
+        </section>
+
+        <!-- Student Promotions -->
+        <section class="glass-panel p-8 rounded-xl mb-8">
+            <h2 class="font-orbitron text-2xl text-white mb-6">Identifying and Promoting Student Leaders</h2>
+            <p class="text-indigo-200 mb-6">
+                Part of your mission as a Technical Mentor is to identify students who demonstrate exceptional potential, leadership, and mastery. The Galactic Archives uses a rank system to recognize and reward student achievement.
+            </p>
+
+            <h3 class="font-orbitron text-xl text-white mb-4">The Student Rank Progression</h3>
+            <div class="space-y-4 mb-8">
+                <div class="flex items-start bg-violet-900/10 p-4 rounded-lg border border-violet-500/20">
+                    <div class="w-10 h-10 mr-4 flex-shrink-0">
+                        <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 15 L20 45 C 20 75, 80 75, 80 45 L50 15Z" stroke="#D4AF37" stroke-width="4" fill="none"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-orbitron text-white mb-1">Cadet</h4>
+                        <p class="text-sm text-violet-300">Entry-level rank assigned upon registration. All students start here.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center text-indigo-500">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+
+                <div class="flex items-start bg-violet-900/20 p-4 rounded-lg border border-violet-500/30">
+                    <div class="w-10 h-10 mr-4 flex-shrink-0">
+                        <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#D4AF37">
+                            <circle cx="50" cy="50" r="12" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-orbitron text-white mb-1">Ensign</h4>
+                        <p class="text-sm text-violet-300">First earned promotion. Awarded for demonstrating potential and quality through their work.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center text-indigo-500">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+
+                <div class="flex items-start bg-violet-900/30 p-4 rounded-lg border border-violet-500/40">
+                    <div class="w-10 h-10 mr-4 flex-shrink-0">
+                        <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#D4AF37">
+                            <circle cx="28" cy="50" r="12"/>
+                            <circle cx="50" cy="50" r="12" fill="#111827" stroke="#D4AF37" stroke-width="3"/>
+                            <circle cx="72" cy="50" r="12"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-orbitron text-white mb-1">Lieutenant Commander</h4>
+                        <p class="text-sm text-violet-300">Squad leader role. Demonstrates leadership skills and manages multiple teams.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center text-indigo-500">
+                    <i class="fas fa-arrow-down"></i>
+                </div>
+
+                <div class="flex items-start bg-gradient-to-r from-violet-900/40 to-indigo-900/40 p-4 rounded-lg border-2 border-violet-500/50">
+                    <div class="w-10 h-10 mr-4 flex-shrink-0">
+                        <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#D4AF37">
+                            <circle cx="28" cy="50" r="12"/>
+                            <circle cx="50" cy="50" r="12"/>
+                            <circle cx="72" cy="50" r="12"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-orbitron text-white mb-1">Commander</h4>
+                        <p class="text-sm text-violet-300">Highest participant rank. Only 1 per event. Exceptional collaboration, quality, and mastery.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-indigo-900/30 p-6 rounded-lg border border-indigo-500/30 mb-6">
+                <h3 class="font-orbitron text-lg text-white mb-4">What to Look For</h3>
+                <ul class="text-indigo-200 space-y-2">
+                    <li><i class="fas fa-star text-yellow-400 mr-2"></i><strong>Technical Excellence:</strong> Deep understanding of concepts, clean code, innovative solutions</li>
+                    <li><i class="fas fa-users text-blue-400 mr-2"></i><strong>Teamwork:</strong> Helps others, shares knowledge, positive attitude</li>
+                    <li><i class="fas fa-rocket text-purple-400 mr-2"></i><strong>Initiative:</strong> Goes beyond requirements, explores extra features, self-motivated</li>
+                    <li><i class="fas fa-lightbulb text-indigo-400 mr-2"></i><strong>Problem-Solving:</strong> Tackles difficult challenges, shows resilience, learns from mistakes</li>
+                    <li><i class="fas fa-trophy text-amber-400 mr-2"></i><strong>Leadership:</strong> Guides teammates, makes decisions, takes ownership</li>
+                </ul>
+            </div>
+
+            <div class="bg-green-900/20 p-6 rounded-lg border-2 border-green-500/40 text-center">
+                <h3 class="font-orbitron text-xl text-white mb-4">Submit Promotion Recommendations</h3>
+                <p class="text-green-200 mb-6">
+                    When you identify a student who deserves promotion, use our official submission form to recommend them to Stella Command.
+                </p>
+                <a href="./promotion-form.html" target="_blank" class="inline-block font-orbitron font-bold text-white px-8 py-3 rounded-full uppercase tracking-wider transition-transform transform hover:-translate-y-1 no-print" 
+                   style="background: linear-gradient(90deg, #10b981, #059669); box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);">
+                    <i class="fas fa-chevron-up mr-2"></i>Recommend Student Promotion
+                </a>
+            </div>
+        </section>
+
+        <!-- Key Contacts -->
+        <section class="glass-panel p-8 rounded-xl mb-8">
+            <h2 class="font-orbitron text-2xl text-white mb-6">Chain of Command & Key Contacts</h2>
+            <div class="space-y-3 text-indigo-200">
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-yellow-500 rounded-full mr-3"></div>
+                    <strong class="text-white w-48">Chief Engineer (DF):</strong>
+                    <span>David FayanKin - Your direct supervisor for all technical matters</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-violet-500 rounded-full mr-3"></div>
+                    <strong class="text-white w-48">Comms Officer (V):</strong>
+                    <span>Currently Vacant - For Discord access and community issues</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-indigo-500 rounded-full mr-3"></div>
+                    <strong class="text-white w-48">Vice Admiral (V):</strong>
+                    <span>Currently Vacant - For operational and timeline questions</span>
+                </div>
+                <div class="flex items-center">
+                    <div class="w-3 h-3 bg-purple-500 rounded-full mr-3"></div>
+                    <strong class="text-white w-48">Admiral (SH):</strong>
+                    <span>Scott Harvey-Whittle - For strategic decisions and escalations</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing -->
+        <section class="glass-panel p-8 rounded-xl mb-8 text-center border-2 border-indigo-500/50">
+            <h2 class="font-orbitron text-3xl text-white mb-4 glow-text">Ad Astra</h2>
+            <p class="text-indigo-200 text-lg mb-6">
+                Thank you for joining Stella Command. Your expertise will help guide the next generation of explorers as they venture into the Final Data Frontier.
+            </p>
+            <p class="text-indigo-300">
+                <strong>End Transmission.</strong>
+            </p>
+        </section>
+
+        <!-- Print Button -->
+        <div class="text-center no-print mb-8">
+            <button onclick="window.print()" class="font-orbitron text-sm text-indigo-400 hover:text-white transition-colors border border-indigo-500 px-6 py-2 rounded-full">
+                <i class="fas fa-print mr-2"></i>Print / Export to PDF
+            </button>
+        </div>
+
+    </div>
+
+</body>
+</html>

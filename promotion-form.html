@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Promotion Recommendation | Galactic Archives</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0a1f;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(129, 140, 248, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(192, 132, 252, 0.15) 0%, transparent 40%),
+                url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Ccircle cx="50" cy="50" r="1"/%3E%3Ccircle cx="10" cy="10" r="1"/%3E%3Ccircle cx="90" cy="90" r="1"/%3E%3C/g%3E%3C/svg%3E');
+            color: #e0e7ff;
+            min-height: 100vh;
+        }
+
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        
+        .glow-text {
+            text-shadow: 0 0 8px rgba(129, 140, 248, 0.6), 0 0 12px rgba(167, 139, 250, 0.4);
+        }
+        
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(129, 140, 248, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        input, select, textarea {
+            background: rgba(17, 24, 39, 0.5);
+            border: 1px solid rgba(129, 140, 248, 0.3);
+            color: #e0e7ff;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #818cf8;
+            box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.1);
+            background: rgba(17, 24, 39, 0.7);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        label {
+            color: #c7d2fe;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+    
+    <div class="max-w-3xl mx-auto">
+        
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 class="font-orbitron text-4xl md:text-5xl font-bold text-white tracking-widest glow-text mb-4">
+                PROMOTION<br>RECOMMENDATION
+            </h1>
+            <p class="text-indigo-300 text-lg">Nominate a student for rank advancement</p>
+        </header>
+
+        <!-- Form -->
+        <form id="promotionForm" class="glass-panel p-8 md:p-10 rounded-xl">
+            
+            <!-- Mentor Information -->
+            <section class="mb-8 pb-8 border-b border-indigo-500/30">
+                <h2 class="font-orbitron text-2xl text-white mb-6"><i class="fas fa-user-tie text-indigo-400 mr-2"></i>Mentor Information</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label for="mentorName" class="block mb-2">Your Name *</label>
+                        <input type="text" id="mentorName" name="mentorName" required 
+                               class="w-full px-4 py-3 rounded-lg" 
+                               placeholder="Enter your full name">
+                    </div>
+                    
+                    <div>
+                        <label for="mentorEmail" class="block mb-2">Your Email *</label>
+                        <input type="email" id="mentorEmail" name="mentorEmail" required 
+                               class="w-full px-4 py-3 rounded-lg" 
+                               placeholder="mentor@example.com">
+                    </div>
+
+                    <div>
+                        <label for="mentorDiscord" class="block mb-2">Discord Username</label>
+                        <input type="text" id="mentorDiscord" name="mentorDiscord" 
+                               class="w-full px-4 py-3 rounded-lg" 
+                               placeholder="username#0000">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Student Information -->
+            <section class="mb-8 pb-8 border-b border-indigo-500/30">
+                <h2 class="font-orbitron text-2xl text-white mb-6"><i class="fas fa-user-graduate text-violet-400 mr-2"></i>Student Information</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label for="studentName" class="block mb-2">Student Name *</label>
+                        <input type="text" id="studentName" name="studentName" required 
+                               class="w-full px-4 py-3 rounded-lg" 
+                               placeholder="Enter student's full name">
+                    </div>
+                    
+                    <div>
+                        <label for="studentEmail" class="block mb-2">Student Email *</label>
+                        <input type="email" id="studentEmail" name="studentEmail" required 
+                               class="w-full px-4 py-3 rounded-lg" 
+                               placeholder="student@university.edu">
+                    </div>
+
+                    <div>
+                        <label for="studentDiscord" class="block mb-2">Student Discord Username</label>
+                        <input type="text" id="studentDiscord" name="studentDiscord" 
+                               class="w-full px-4 py-3 rounded-lg" 
+                               placeholder="username#0000">
+                    </div>
+
+                    <div>
+                        <label for="studentTeam" class="block mb-2">Team Name</label>
+                        <input type="text" id="studentTeam" name="studentTeam" 
+                               class="w-full px-4 py-3 rounded-lg" 
+                               placeholder="Enter team name if applicable">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Current and Proposed Rank -->
+            <section class="mb-8 pb-8 border-b border-indigo-500/30">
+                <h2 class="font-orbitron text-2xl text-white mb-6"><i class="fas fa-chevron-up text-green-400 mr-2"></i>Promotion Details</h2>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="currentRank" class="block mb-2">Current Rank *</label>
+                        <select id="currentRank" name="currentRank" required 
+                                class="w-full px-4 py-3 rounded-lg">
+                            <option value="">Select current rank...</option>
+                            <option value="cadet">Cadet</option>
+                            <option value="ensign">Ensign</option>
+                            <option value="lieutenant_commander">Lieutenant Commander</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="proposedRank" class="block mb-2">Proposed Rank *</label>
+                        <select id="proposedRank" name="proposedRank" required 
+                                class="w-full px-4 py-3 rounded-lg">
+                            <option value="">Select proposed rank...</option>
+                            <option value="ensign">Ensign</option>
+                            <option value="lieutenant_commander">Lieutenant Commander</option>
+                            <option value="commander">Commander</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Visual Rank Progression -->
+                <div class="bg-indigo-900/20 p-6 rounded-lg border border-indigo-500/20">
+                    <p class="text-sm text-indigo-300 mb-4 text-center">Standard Progression Path</p>
+                    <div class="flex items-center justify-center space-x-4 text-xs">
+                        <div class="text-center">
+                            <div class="w-12 h-12 mx-auto mb-2">
+                                <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M50 15 L20 45 C 20 75, 80 75, 80 45 L50 15Z" stroke="#D4AF37" stroke-width="4" fill="none"/>
+                                </svg>
+                            </div>
+                            <p class="text-violet-300 font-orbitron">Cadet</p>
+                        </div>
+                        <i class="fas fa-arrow-right text-indigo-500"></i>
+                        <div class="text-center">
+                            <div class="w-12 h-12 mx-auto mb-2">
+                                <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#D4AF37">
+                                    <circle cx="50" cy="50" r="12" />
+                                </svg>
+                            </div>
+                            <p class="text-violet-300 font-orbitron">Ensign</p>
+                        </div>
+                        <i class="fas fa-arrow-right text-indigo-500"></i>
+                        <div class="text-center">
+                            <div class="w-12 h-12 mx-auto mb-2">
+                                <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#D4AF37">
+                                    <circle cx="28" cy="50" r="10"/>
+                                    <circle cx="50" cy="50" r="10" fill="#111827" stroke="#D4AF37" stroke-width="3"/>
+                                    <circle cx="72" cy="50" r="10"/>
+                                </svg>
+                            </div>
+                            <p class="text-violet-300 font-orbitron text-[10px]">Lt. Cmdr</p>
+                        </div>
+                        <i class="fas fa-arrow-right text-indigo-500"></i>
+                        <div class="text-center">
+                            <div class="w-12 h-12 mx-auto mb-2">
+                                <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#D4AF37">
+                                    <circle cx="28" cy="50" r="10"/>
+                                    <circle cx="50" cy="50" r="10"/>
+                                    <circle cx="72" cy="50" r="10"/>
+                                </svg>
+                            </div>
+                            <p class="text-violet-300 font-orbitron">Cmdr</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Justification -->
+            <section class="mb-8 pb-8 border-b border-indigo-500/30">
+                <h2 class="font-orbitron text-2xl text-white mb-6"><i class="fas fa-clipboard-list text-yellow-400 mr-2"></i>Justification</h2>
+                
+                <div class="mb-6">
+                    <label class="block mb-3">Demonstrated Qualities (check all that apply) *</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center text-indigo-200 cursor-pointer hover:text-white">
+                            <input type="checkbox" name="qualities" value="technical_excellence" class="mr-3 w-5 h-5">
+                            <i class="fas fa-star text-yellow-400 mr-2"></i>
+                            Technical Excellence & Innovation
+                        </label>
+                        <label class="flex items-center text-indigo-200 cursor-pointer hover:text-white">
+                            <input type="checkbox" name="qualities" value="teamwork" class="mr-3 w-5 h-5">
+                            <i class="fas fa-users text-blue-400 mr-2"></i>
+                            Exceptional Teamwork & Collaboration
+                        </label>
+                        <label class="flex items-center text-indigo-200 cursor-pointer hover:text-white">
+                            <input type="checkbox" name="qualities" value="leadership" class="mr-3 w-5 h-5">
+                            <i class="fas fa-trophy text-amber-400 mr-2"></i>
+                            Leadership & Initiative
+                        </label>
+                        <label class="flex items-center text-indigo-200 cursor-pointer hover:text-white">
+                            <input type="checkbox" name="qualities" value="problem_solving" class="mr-3 w-5 h-5">
+                            <i class="fas fa-lightbulb text-indigo-400 mr-2"></i>
+                            Outstanding Problem-Solving
+                        </label>
+                        <label class="flex items-center text-indigo-200 cursor-pointer hover:text-white">
+                            <input type="checkbox" name="qualities" value="mentorship" class="mr-3 w-5 h-5">
+                            <i class="fas fa-hands-helping text-purple-400 mr-2"></i>
+                            Peer Mentorship & Knowledge Sharing
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label for="achievements" class="block mb-2">Specific Achievements *</label>
+                    <textarea id="achievements" name="achievements" required rows="4" 
+                              class="w-full px-4 py-3 rounded-lg" 
+                              placeholder="Describe specific projects, contributions, or accomplishments that demonstrate this student's readiness for promotion..."></textarea>
+                    <p class="text-xs text-indigo-400 mt-1">Include technical details, challenges overcome, and impact on team/project.</p>
+                </div>
+
+                <div>
+                    <label for="reasoning" class="block mb-2">Additional Reasoning *</label>
+                    <textarea id="reasoning" name="reasoning" required rows="4" 
+                              class="w-full px-4 py-3 rounded-lg" 
+                              placeholder="Why do you believe this student deserves this promotion? What sets them apart from their peers?"></textarea>
+                </div>
+            </section>
+
+            <!-- Evidence -->
+            <section class="mb-8">
+                <h2 class="font-orbitron text-2xl text-white mb-6"><i class="fas fa-link text-indigo-400 mr-2"></i>Supporting Evidence</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label for="projectLink" class="block mb-2">Project/Repository Link</label>
+                        <input type="url" id="projectLink" name="projectLink" 
+                               class="w-full px-4 py-3 rounded-lg" 
+                               placeholder="https://github.com/username/project">
+                    </div>
+                    
+                    <div>
+                        <label for="additionalLinks" class="block mb-2">Additional Evidence Links</label>
+                        <textarea id="additionalLinks" name="additionalLinks" rows="3" 
+                                  class="w-full px-4 py-3 rounded-lg" 
+                                  placeholder="Provide any additional links (Discord messages, demo videos, documentation, etc.)"></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Submit Button -->
+            <div class="text-center pt-6 border-t border-indigo-500/30">
+                <button type="submit" class="font-orbitron font-bold text-white px-10 py-4 rounded-full uppercase tracking-wider transition-all transform hover:-translate-y-1 hover:scale-105" 
+                        style="background: linear-gradient(90deg, #818cf8, #c084fc); box-shadow: 0 0 20px rgba(167, 139, 250, 0.5);">
+                    <i class="fas fa-paper-plane mr-2"></i>Submit Recommendation
+                </button>
+                <p class="text-xs text-indigo-400 mt-4">All promotions are reviewed by Stella Command</p>
+            </div>
+
+        </form>
+
+        <!-- Success Message (Hidden by default) -->
+        <div id="successMessage" class="hidden glass-panel p-8 rounded-xl mt-8 text-center border-2 border-green-500">
+            <i class="fas fa-check-circle text-6xl text-green-400 mb-4"></i>
+            <h2 class="font-orbitron text-3xl text-white mb-4">Transmission Received</h2>
+            <p class="text-green-200 text-lg mb-2">
+                Your promotion recommendation has been successfully submitted to Stella Command.
+            </p>
+            <p class="text-indigo-300 text-sm">
+                The Admiral and Vice Admiral will review this nomination and make a determination.
+            </p>
+            <button onclick="resetForm()" class="mt-6 font-orbitron text-sm text-indigo-400 hover:text-white border border-indigo-500 px-6 py-2 rounded-full transition-colors">
+                Submit Another Recommendation
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // Form handling
+        const form = document.getElementById('promotionForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate that at least one quality is checked
+            const qualities = form.querySelectorAll('input[name="qualities"]:checked');
+            if (qualities.length === 0) {
+                alert('Please select at least one demonstrated quality.');
+                return;
+            }
+
+            // Collect form data
+            const formData = new FormData(form);
+            const data = {};
+            
+            // Convert FormData to object
+            for (let [key, value] of formData.entries()) {
+                if (key === 'qualities') {
+                    if (!data.qualities) data.qualities = [];
+                    data.qualities.push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+
+            // Log the data (in production, this would send to a server)
+            console.log('Promotion Recommendation Data:', data);
+
+            // Show success message
+            form.style.display = 'none';
+            successMessage.classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // In production, you would send this data to your backend:
+            // fetch('/api/submit-promotion', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(data)
+            // });
+        });
+
+        function resetForm() {
+            form.reset();
+            form.style.display = 'block';
+            successMessage.classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Dynamic rank validation
+        const currentRank = document.getElementById('currentRank');
+        const proposedRank = document.getElementById('proposedRank');
+
+        currentRank.addEventListener('change', function() {
+            const current = this.value;
+            const proposedOptions = proposedRank.querySelectorAll('option');
+            
+            proposedOptions.forEach(option => {
+                option.disabled = false;
+            });
+
+            // Disable invalid promotions
+            if (current === 'cadet') {
+                proposedOptions.forEach(option => {
+                    if (option.value === 'lieutenant_commander' || option.value === 'commander') {
+                        option.disabled = true;
+                    }
+                });
+            } else if (current === 'ensign') {
+                proposedOptions.forEach(option => {
+                    if (option.value === 'ensign') {
+                        option.disabled = true;
+                    }
+                });
+            } else if (current === 'lieutenant_commander') {
+                proposedOptions.forEach(option => {
+                    if (option.value !== 'commander' && option.value !== '') {
+                        option.disabled = true;
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
