@@ -141,10 +141,10 @@
             div.className = 'product-card glass-panel p-4 flex flex-col';
             const img = document.createElement('div');
             img.className = 'bg-indigo-900/30 h-48 rounded-lg mb-4 flex items-center justify-center overflow-hidden';
-            if (product.image) {
+            if (product.thumbnail_url) {
                 const imgEl = document.createElement('img');
-                imgEl.src = product.image;
-                imgEl.alt = product.title;
+                imgEl.src = product.thumbnail_url;
+                imgEl.alt = product.name;
                 imgEl.className = 'w-full h-full object-cover';
                 img.appendChild(imgEl);
             } else {
@@ -152,7 +152,7 @@
             }
             const title = document.createElement('h3');
             title.className = 'font-orbitron text-white font-bold mb-2 text-sm min-h-[40px]';
-            title.textContent = product.title || 'Product';
+            title.textContent = product.name || 'Product';
             const type = document.createElement('p');
             type.className = 'text-indigo-400 text-xs mb-2';
             type.textContent = product.type_name || '';
@@ -162,7 +162,7 @@
             const button = document.createElement('button');
             button.className = 'btn-primary text-white font-bold py-2 px-4 rounded-full text-sm mt-auto';
             button.textContent = 'View Details';
-            button.onclick = () => alert(`Product: ${product.title}\n\nReplace YOUR_PRINTFUL_API_KEY in the code with your actual Printful private token to enable full functionality.`);
+            button.onclick = () => alert(`Product: ${product.name}\n\nReplace YOUR_PRINTFUL_API_KEY in the code with your actual Printful private token to enable full functionality.`);
             div.appendChild(img);
             div.appendChild(title);
             div.appendChild(type);
